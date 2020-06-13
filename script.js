@@ -45,7 +45,7 @@ function generatePassword() {
   }
 
   // first prompt for length of password //
-  var howLong = parseFloat(prompt("How many characters long would you like your password? Enter a number between 8 - 128."))
+  var howLong = prompt("How many characters long would you like your password? Enter a number between 8 - 128.")
 
   // validator to ensure input is useable //
   while (howLong < 8 || howLong > 128 || isNaN(howLong)) {
