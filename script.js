@@ -1,25 +1,11 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// TODO: Create generatePassword
-  // prompt - how many characters (length)
-    // store (password length) in variable
-  // confirm other user wants (special characters, numeric characters, lowercase characters, uppercase characters)
-    // store (booleanConfirms) in variable
-  // (5 variables in total storage)
-// if character boolean is true, add that array to a compiling array like "possibleCharacters" array
-
-// then we build the new password out of the "possibleCharacters" array into a passwordString var
-
-// return passwordString 
-
 
 // WORKSPACE //
 
 
-
-
-// The final function goal //
+// The final function goal : return a random string set to user chosen length and from user chosen character sets//
 function generatePassword() {
 
   // defining character set arrays//
@@ -28,10 +14,13 @@ function generatePassword() {
   var symbols = ["!","@","#","$","%","^","&","*","(",")","-","+","=","_","`","~"];
   var numbers = "0123456789";
 
-  // defining final array where character sets will be added to //
-  var useTheseCharacters = []
+  // defining an array where character sets will be added to //
+  var useTheseCharacters = [];
 
-  // defining a function that enters chosen character set arrays into final array //
+  // defining an array where random characters (from chosen characters sets) will be added to //
+  var output = [];
+
+  // defining a function that enters chosen character set arrays into useTheseCharacters array //
   function enterCharacterSets(){
     if (yesLowercase) {
       for( var i=0; i < lowerCase.length; i++ ) {
@@ -56,8 +45,8 @@ function generatePassword() {
   }
 
   // first prompt for length of password //
-  var howLong = prompt("How many characters long would you like your password? Enter a number between 8 - 128.")
-  
+  var howLong = parseFloat(prompt("How many characters long would you like your password? Enter a number between 8 - 128."))
+
   // validator to ensure input is useable //
   while (howLong < 8 || howLong > 128 || isNaN(howLong)) {
     var howLong = prompt("Please only choose a number within 8 - 128.")
@@ -80,27 +69,21 @@ function generatePassword() {
     enterCharacterSets();
   }
 
-    console.log(useTheseCharacters);
-    
-
+  // loop set to howLong var (user choosen length) choosing a random character (from useTheseCharacter array) and pushing it to output array //
+  for(var i=0; i < howLong; i++) {
+    var randomGenerator = useTheseCharacters[Math.floor(Math.random() * (useTheseCharacters.length))];
+    output.push(randomGenerator);
   }
 
-
-  
-  
-
+  // joining output array into one string and returning for final output of generatePassword//
+    return (output.join(""))
 
 
-
-
-
-
-function newFunction() {
-  var mustChoose;
-  return mustChoose;
 }
 
 // WORKSPACE END //
+
+
 
 // Write password to the #password input
 function writePassword() {
